@@ -21,6 +21,14 @@ app = FastAPI(title="BookKeeping", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory="static/"), name="static")
 app.include_router(router_files)
 
+try:
+    from magnum import Magnum
+
+    handler = Magnum(app)
+except Exception as e:
+    handler = None
+    print(e)
+
 
 @app.get("/health_check")
 def home():
