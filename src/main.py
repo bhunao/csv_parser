@@ -1,18 +1,19 @@
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from typing import Any
-from fastapi import FastAPI
-from src.models import MODEL
-from src.core import engine
-from src.routes import router_files
 
+from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+
+# from src.models import MODEL
+# from src.core import engine
+from src.routes import router_files
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[Any]:
     assert app
-    MODEL.metadata.create_all(engine)
+    # MODEL.metadata.create_all(engine)
     yield
 
 

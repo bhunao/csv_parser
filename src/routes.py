@@ -2,9 +2,9 @@ from io import StringIO
 
 import pandas as pd
 from fastapi import APIRouter, Depends, HTTPException, Request, UploadFile, status
+from jinja2_fragments.fastapi import Jinja2Blocks
 from pandas.errors import ParserError
 from sqlmodel import Session
-from jinja2_fragments.fastapi import Jinja2Blocks
 
 from src.core import get_session
 
