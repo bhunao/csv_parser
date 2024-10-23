@@ -7,9 +7,6 @@ router_files = APIRouter()
 templates = Jinja2Blocks("templates")
 
 
-d_types = str | int | float
-
-
 @router_files.get("/")
 async def read_all_files(r: Request):
     print(validate_csv_file)
