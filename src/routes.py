@@ -7,9 +7,6 @@ from sqlmodel import Session
 from jinja2_fragments.fastapi import Jinja2Blocks
 
 from src.core import get_session
-from src.models import (
-    File,
-)
 
 router_files = APIRouter()
 templates = Jinja2Blocks("templates")
@@ -42,13 +39,10 @@ async def validate_csv_file(file: UploadFile) -> tuple[bytes, list[dict[str, d_t
 
 
 @router_files.get("/")
-async def read_all_files(r: Request, s: Session = DepSession):
+async def read_all_files(r: Request):
     return templates.TemplateResponse(name="base.html", context=dict(request=r))
 
 
 @router_files.post("/")
-async def upload_file(file: UploadFile, s: Session = DepSession):
-    file_content, _file_dict_record = await validate_csv_file(file)
-
-    new_record = File(name=str(file.filename), content=file_content).create(s)
-    return new_record
+async def upload_file(r: Request):
+    return templates.TemplateResponse(name="base.html", context=dict(request=r))
