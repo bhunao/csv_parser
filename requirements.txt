@@ -71,5 +71,7 @@ typing-extensions==4.12.2
     #   pydantic
     #   pydantic-core
     #   sqlalchemy
+uv==0.4.27
+    # via csv-parser (pyproject.toml)
 uvicorn==0.32.0
     # via csv-parser (pyproject.toml)
